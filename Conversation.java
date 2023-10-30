@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.Random;
 public class Conversation {
     public static void main(String[] args) {
@@ -29,10 +28,10 @@ public class Conversation {
 
         Scanner input = new Scanner(System.in);
         Random r = new Random();
-        String[] transcript = new String[2 * num_rounds + 2];
         System.out.println("How many rounds of conversation would you like to have?");
         num_rounds = input.nextInt();
         input.nextLine();
+        String[] transcript = new String[2 * num_rounds + 2];
         System.out.println("Hi, there! What's on your mind today?");
         transcript[0] = ("Hi, there! What's on your mind today!");
 
@@ -45,7 +44,7 @@ public class Conversation {
                 if (element.equals("you")) {
                     System.out.println(i_response[i]);
                     transcript[2*round + 2] = i_response[i];
-                } else if (element.equals(" i ")) {
+                } else if (element.equals("i")) {
                     System.out.println(u_response[i]);
                     transcript[2*round + 2] = u_response[i];
                 } else if (element.equals("who")) {
@@ -72,9 +71,14 @@ public class Conversation {
                 }
 
             }
+        }
         System.out.println("Thanks for chatting with me! See ya later!");
-        transcript[-1] = ("Thanks for chatting with me! See ya later!");
-        System.out.println(transcript);
+        transcript[transcript.length - 1] = ("Thanks for chatting with me! See ya later!");
+        input.close();
+        
+        System.out.println("\nTRANSCRIPT: ");
+        for (String s: transcript){
+        System.out.println(s);
         }
     }
 }
